@@ -5,10 +5,10 @@ const jwt = require("jsonwebtoken"); // For generating JWT tokens
 
 const registerUser = async (req, res) => {
   try {
-    const { name, email, password, favoritecolor } = req.body;
+    const { name, email, password, favoritecolor, role } = req.body;
 
     // Check if all required fields are present
-    if (!name || !email || !password || !favoritecolor) {
+    if (!name || !email || !password || !favoritecolor ||!role) {
       return res.status(400).json({
         success: false,
         message: "All fields are required: name, email, password, and favoritecolor",
@@ -33,6 +33,7 @@ const registerUser = async (req, res) => {
       email,
       password: hashedPassword,
       favoritecolor,
+      role,
     });
 
     // Save the user to the database
@@ -46,6 +47,7 @@ const registerUser = async (req, res) => {
         id: savedUser._id,
         name: savedUser.name,
         email: savedUser.email,
+        role: savedUser.role
       },
     });
   } catch (error) {
@@ -215,7 +217,7 @@ const getUsers = async (req, res) => {
 const updateUser = async (req, res) => {
   try {
     const { id } = req.params; // Extract user ID from request parameters
-    const { name, email, password } = req.body; // Extract data from request body
+    const { name, email, password, role } = req.body; // Extract data from request body
 
     // Check if the user exists
     const existingUser = await User.findById(id);
@@ -236,6 +238,7 @@ const updateUser = async (req, res) => {
     existingUser.name = name || existingUser.name;
     existingUser.email = email || existingUser.email;
     existingUser.password = hashedPassword || existingUser.password;
+    existingUser.role = role || existingUser.role;
 
     // Save updated user to the database
     const updatedUser = await existingUser.save();

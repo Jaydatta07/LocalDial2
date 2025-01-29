@@ -8,14 +8,14 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [favoritecolor, setFavoritecolor] = useState("");
-  const [role, setRole] = useState("user"); // Set the default role as "user"
+  const [role, setRole] = useState(""); // Set the default role as "user"
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!name || !email || !password || !favoritecolor) {
+    if (!name || !email || !password || !favoritecolor ||!role) {
       setError("All fields are required.");
       return;
     }
