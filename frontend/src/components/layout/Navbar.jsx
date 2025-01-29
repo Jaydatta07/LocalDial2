@@ -53,13 +53,13 @@ const Navbar = ({ onCategoryChange, onFilter, isLoggedIn }) => {
           value={selectedCategory}
           onChange={handleCategoryChange}
         >
-          <option value="All">All Cities</option>
-          <option value="Grocery Shops">Delhi</option>
-          <option value="Hospitals">Mumbai</option>
-          <option value="Gyms">Pune</option>
-          <option value="Restaurants">Bengaluru</option>
-          <option value="Hotels">Hyderabad</option>
-          <option value="Pharmacies">Kolkata</option>
+          <option value="All">select Category</option>
+          <option value="Grocery Shops">Grocery Shops</option>
+          <option value="Hospitals">Hospitals</option>
+          <option value="Gyms">Gyms</option>
+          <option value="Restaurants">Restaurants</option>
+          <option value="Hotels">Hotels</option>
+          <option value="Pharmacies">Pharmacies</option>
         </select>
 
         {/* Navigation Links */}

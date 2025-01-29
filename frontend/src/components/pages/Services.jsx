@@ -43,6 +43,7 @@ const ServicesPage = () => {
               description={service.description}
               image={service.image}
               category={service.category}
+              city={service.city}
             />
           ))
         ) : (

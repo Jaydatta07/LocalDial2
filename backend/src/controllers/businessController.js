@@ -42,9 +42,9 @@ const getBusinessById = async (req, res) => {
 
 // Create a business
 const createBusiness = async (req, res) => {
-  const { name, description, image, category } = req.body;
+  const { name, description, image, category, city } = req.body;
   try {
-    const newBusiness = new Business({ name, description, image, category });
+    const newBusiness = new Business({ name, description, image, category, city });
     const savedBusiness = await newBusiness.save();
     res.status(201).json({
       success: true,

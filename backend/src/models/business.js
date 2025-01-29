@@ -19,6 +19,10 @@ const businessSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    city: {
+      type:String,
+      required: true,
+    }
   },
   { timestamps: true }
 );

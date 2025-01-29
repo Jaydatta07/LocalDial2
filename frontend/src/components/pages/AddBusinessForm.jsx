@@ -4,15 +4,16 @@ import { addServices } from "../apiCalls";
 const AddBusinessForm = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState("");
   const [category, setCategory] = useState("");
+  const [city, setCity] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!name || !description || !image || !category) {
+    if (!name || !description || !image || !category || !city) {
       setError("All fields are required.");
       return;
     }
@@ -25,6 +26,7 @@ const AddBusinessForm = () => {
     formData.append("description", description);
     formData.append("image", image); // File
     formData.append("category", category);
+    formData.append("city", city);
 
     try {
       const response = await addServices(formData); // API call to add service
@@ -33,8 +35,9 @@ const AddBusinessForm = () => {
         alert("Service uploaded successfully!");
         setName("");
         setDescription("");
-        setImage(null);
+        setImage("");
         setCategory("");
+        setCity("");
       } else {
         throw new Error(response.message || "Service upload failed.");
       }
@@ -106,6 +109,24 @@ const AddBusinessForm = () => {
               <option value="Restaurants">Restaurants</option>
               <option value="Hotels">Hotels</option>
               <option value="Pharmacies">Pharmacies</option>
+            </select>
+          </div>
+
+          {/* City Selection Field */}
+          <div className="relative">
+            <select
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-orange-500 focus:outline-none text-gray-800"
+              required
+            >
+              <option value="">Select a city</option>
+              <option value="Delhi">Delhi</option>
+              <option value="Mumbai">Mumbai</option>
+              <option value="Pune">Pune</option>
+              <option value="Bengaluru">Bengaluru</option>
+              <option value="Hyderabad">Hyderabad</option>
+              <option value="Kolkata">Kolkata</option>
             </select>
           </div>
 
