@@ -8,7 +8,7 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [favoritecolor, setFavoritecolor] = useState("");
-  const [role, setRole] = useState(""); // Set the default role as "user"
+  const [role, setRole] = useState("user"); // Set the default role as "user"
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
