@@ -11,7 +11,6 @@ import Login from "./components/pages/Login";
 import ResetPassword from "./components/pages/ResetPassword";
 import Services from "./components/pages/Services";
 import BusinessCard from "./components/layout/BusinessCard";
-// import Dashboard from "./components/pages/dashboard";
 import NavbarAuth from "./components/layout/NavbarAuth";
 import AdminDashboard from "./components/pages/adminPanel";
 import UserDashboard from "./components/pages/Admindashboard";
@@ -20,14 +19,21 @@ import ProtectedRoute from "./components/pages/protectedRoutes";
 const App = () => {
   // State to track user authentication status
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [userRole, setUserRole] = useState(null);
 
-  // Check the token in localStorage to determine authentication status
+  // Check authentication status on mount
   useEffect(() => {
     const token = localStorage.getItem("authToken");
-    setIsAuthenticated(!!token); // Set true if token exists, false if not
-    const token1 = localStorage.getItem("userRole");
-    setIsAuthenticated(!!token1);
-  }, []); 
+    const role = localStorage.getItem("userRole");
+
+    if (token) {
+      setIsAuthenticated(true);
+      setUserRole(role);
+    } else {
+      setIsAuthenticated(false);
+      setUserRole(null);
+    }
+  }, []);
 
   const handleCategoryChange = (category) => {
     console.log("Selected category:", category);
@@ -36,7 +42,7 @@ const App = () => {
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
-        {/* Conditionally render Navbar or NavbarAuth */}
+        {/* Conditionally render Navbar or NavbarAuth based on authentication state */}
         {isAuthenticated ? (
           <NavbarAuth onCategoryChange={handleCategoryChange} />
         ) : (
@@ -46,8 +52,8 @@ const App = () => {
         <main className="flex-grow">
           <Routes>
             <Route path="/protected" element={<ProtectedRoute />} />
-             {/* Protected Routes */}
-             <Route
+            {/* Protected Routes */}
+            <Route
               path="/dashboard"
               element={
                 <ProtectedRoute>
@@ -73,7 +79,6 @@ const App = () => {
             <Route path="/businesscard" element={<BusinessCard />} />
             <Route path="/services" element={<Services />} />
             <Route path="/" element={<Navigate to="/home" />} />
-            {/* <Route path="/dashboard" element={<Dashboard />} /> */}
           </Routes>
         </main>
 
