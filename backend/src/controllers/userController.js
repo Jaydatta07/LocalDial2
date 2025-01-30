@@ -70,6 +70,10 @@ const registerUser = async (req, res) => {
   }
 };
 
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const User = require("../models/user"); // Adjust path if needed
+
 // Login user (POST)
 const loginUser = async (req, res) => {
   try {
@@ -79,7 +83,7 @@ const loginUser = async (req, res) => {
     if (!email || !password || !role) {
       return res.status(400).json({
         success: false,
-        message: "Email and password are required",
+        message: "Email, password, and role are required.",
       });
     }
 
@@ -92,45 +96,47 @@ const loginUser = async (req, res) => {
       });
     }
 
-    // Compare provided password with hashed password in the database
+    // Verify password
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
       return res.status(401).json({
         success: false,
-        message: "Invalid email or password",
+        message: "Invalid email or password.",
       });
     }
 
-    const isRoleValid = await bcrypt.compare(role, user.role);
-    if (!isRoleValid) {
-      return res.status(402).json({
+    // Ensure the role matches the one stored in the database (case insensitive check)
+    if (user.role.toLowerCase() !== role.toLowerCase()) {
+      return res.status(403).json({
         success: false,
-        message: "Invalid role",
+        message: `Unauthorized: You are registered as "${user.role}", not "${role}".`,
       });
     }
 
-    // Generate a JWT token
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "1h", // Token expires in 1 hour
-    });
+    // Generate a JWT token with role included
+    const token = jwt.sign(
+      { id: user._id, role: user.role }, // Storing the role in token
+      process.env.JWT_SECRET,
+      { expiresIn: "1h" } // Token expires in 1 hour
+    );
 
-    // Respond with success message and token
+    // Send the token and user details in response
     res.status(200).json({
       success: true,
       message: "Login successful",
-      token, // Include the token in the response
+      token, // Include the token
       user: {
         id: user._id,
         name: user.name,
         email: user.email,
-        role: user.role,
+        role: user.role, // Include role in response
       },
     });
   } catch (error) {
-    console.error("Error in user login:", error);
+    console.error("Error during login:", error);
     res.status(500).json({
       success: false,
-      error: "Internal Server Error",
+      message: "Internal Server Error. Please try again later.",
     });
   }
 };

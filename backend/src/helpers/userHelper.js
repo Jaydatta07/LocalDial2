@@ -11,14 +11,5 @@ const hashPassword = async (password) => {
   }
 };
 
-const hashRole = async (role) => {
-  try {
-    const saltRounds = 10;
-    return await bcrypt.hash(role, saltRounds);
-  } catch (error) {
-    console.error("Error hashing password:", error);
-    throw new Error("Error hashing password");
-  }
-};
 
-module.exports = { hashPassword,hashRole };
+module.exports = { hashPassword };
