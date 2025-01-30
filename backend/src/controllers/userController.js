@@ -73,10 +73,10 @@ const registerUser = async (req, res) => {
 // Login user (POST)
 const loginUser = async (req, res) => {
   try {
-    const { email, password, role } = req.body;
+    const { email, password} = req.body;
 
     // Validate input
-    if (!email || !password || !role) {
+    if (!email || !password ) {
       return res.status(400).json({
         success: false,
         message: "Email and password are required",
@@ -101,12 +101,12 @@ const loginUser = async (req, res) => {
       });
     }
 
-    if (user.role !== role) {
-      return res.status(400).json({
-          success: false,
-          message: "Security answer is incorrect",
-      });
-  }
+  //   if (user.role !== role) {
+  //     return res.status(400).json({
+  //         success: false,
+  //         message: "Security answer is incorrect",
+  //     });
+  // }
 
     // Generate a JWT token
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
@@ -122,7 +122,7 @@ const loginUser = async (req, res) => {
         id: user._id,
         name: user.name,
         email: user.email,
-        role: user.role,
+      
       },
     });
   } catch (error) {
