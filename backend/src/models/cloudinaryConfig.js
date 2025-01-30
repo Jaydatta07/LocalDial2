@@ -1,10 +1,9 @@
-const cloudinary = require('cloudinary').v2;
+const cloudinary = require("cloudinary").v2;
 
-// Configure Cloudinary with your credentials
 cloudinary.config({
-  cloud_name: 'dw3olyho7', // Replace with your Cloudinary cloud name
-  api_key: '428424463293479', // Replace with your API key
-  api_secret: 'G6Ybc6aeoggvokkFehfLFIKlHmc', // Replace with your API secret
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
 module.exports = cloudinary;
