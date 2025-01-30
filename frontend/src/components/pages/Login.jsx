@@ -27,7 +27,7 @@ const Login = () => {
   
       if (response.success) {
         localStorage.setItem("authToken", response.token);
-        localStorage.setItem("userRole", response.role);
+        localStorage.setItem("userRole", role);
 
         alert("Login successful!");
         localStorage.setItem("authToken", response.token); // Save token
