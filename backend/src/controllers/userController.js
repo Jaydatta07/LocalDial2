@@ -69,25 +69,19 @@ const registerUser = async (req, res) => {
     });
   }
 };
-// const bcrypt = require("bcryptjs");
-// const jwt = require("jsonwebtoken");
-// const User = require("../models/user"); // Adjust path if needed
 
 // Login user (POST)
 const loginUser = async (req, res) => {
   try {
-    let { email, password, role } = req.body;
+    const { email, password, role } = req.body;
 
     // Validate input
     if (!email || !password || !role) {
       return res.status(400).json({
         success: false,
-        message: "Email, password, and role are required.",
+        message: "Email and password are required",
       });
     }
-
-    // Trim and convert role to lowercase for comparison
-    role = role.trim().toLowerCase();
 
     // Check if the user exists
     const user = await User.findOne({ email });
@@ -98,47 +92,45 @@ const loginUser = async (req, res) => {
       });
     }
 
-    // Verify password
+    // Compare provided password with hashed password in the database
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
       return res.status(401).json({
         success: false,
-        message: "Invalid email or password.",
+        message: "Invalid email or password",
       });
     }
 
-    // Ensure the role matches the one stored in the database (case insensitive check)
-    if (user.role.trim().toLowerCase() !== role) {
-      return res.status(403).json({
+    const isRoleValid = await bcrypt.compare(role, user.role);
+    if (!isRoleValid) {
+      return res.status(401).json({
         success: false,
-        message: `Unauthorized: You are registered as "${user.role}", not "${role}".`,
+        message: "Invalid role",
       });
     }
 
-    // Generate a JWT token with role included
-    const token = jwt.sign(
-      { id: user._id, role: user.role }, // Storing the role in token
-      process.env.JWT_SECRET,
-      { expiresIn: "1h" } // Token expires in 1 hour
-    );
+    // Generate a JWT token
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+      expiresIn: "1h", // Token expires in 1 hour
+    });
 
-    // Send the token and user details in response
+    // Respond with success message and token
     res.status(200).json({
       success: true,
       message: "Login successful",
-      token, // Include the token
+      token, // Include the token in the response
       user: {
         id: user._id,
         name: user.name,
         email: user.email,
-        role: user.role, // Include role in response
+        role: user.role,
       },
     });
   } catch (error) {
-    console.error("Error during login:", error);
+    console.error("Error in user login:", error);
     res.status(500).json({
       success: false,
-      message: "Internal Server Error. Please try again later.",
+      error: "Internal Server Error",
     });
   }
 };
