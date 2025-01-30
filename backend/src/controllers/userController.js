@@ -69,15 +69,14 @@ const registerUser = async (req, res) => {
     });
   }
 };
-
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const User = require("../models/user"); // Adjust path if needed
+// const bcrypt = require("bcryptjs");
+// const jwt = require("jsonwebtoken");
+// const User = require("../models/user"); // Adjust path if needed
 
 // Login user (POST)
 const loginUser = async (req, res) => {
   try {
-    const { email, password, role } = req.body;
+    let { email, password, role } = req.body;
 
     // Validate input
     if (!email || !password || !role) {
@@ -86,6 +85,9 @@ const loginUser = async (req, res) => {
         message: "Email, password, and role are required.",
       });
     }
+
+    // Trim and convert role to lowercase for comparison
+    role = role.trim().toLowerCase();
 
     // Check if the user exists
     const user = await User.findOne({ email });
@@ -106,7 +108,7 @@ const loginUser = async (req, res) => {
     }
 
     // Ensure the role matches the one stored in the database (case insensitive check)
-    if (user.role.toLowerCase() !== role.toLowerCase()) {
+    if (user.role.trim().toLowerCase() !== role) {
       return res.status(403).json({
         success: false,
         message: `Unauthorized: You are registered as "${user.role}", not "${role}".`,
