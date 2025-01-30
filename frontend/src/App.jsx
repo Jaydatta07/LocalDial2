@@ -17,21 +17,21 @@ import UserDashboard from "./components/pages/Admindashboard";
 import ProtectedRoute from "./components/pages/protectedRoutes";
 
 const App = () => {
-  // State to track user authentication status and role
+  // State to track user authentication status
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [userRole, setUserRole] = useState(null); // Use null to indicate no role initially
+  const [userRole, setUserRole] = useState(false);
 
-  // Check authentication status and role on mount
+  // Check authentication status on mount
   useEffect(() => {
     const token = localStorage.getItem("authToken");
     const role = localStorage.getItem("userRole");
 
-    if (token && role) { // Fixed condition here
+    if (token) {
       setIsAuthenticated(true);
-      setUserRole(role); // Set the role from localStorage
+      setUserRole(role);
     } else {
       setIsAuthenticated(false);
-      setUserRole(null); // Clear the role if not authenticated
+      setUserRole(null);
     }
   }, []);
 
@@ -48,34 +48,31 @@ const App = () => {
         ) : (
           <Navbar onCategoryChange={handleCategoryChange} />
         )}
-
+   
         <main className="flex-grow">
           <Routes>
-            {/* Protected Route */}
             <Route path="/protected" element={<ProtectedRoute />} />
+            {/* Protected Routes */}
             
-            {/* Conditional Rendering for Dashboards based on user role */}
-            {isAuthenticated && userRole === "user" ? (
-              <Route
-                path="/dashboard"
-                element={
-                  <ProtectedRoute>
-                    <UserDashboard onCategoryChange={handleCategoryChange} />
-                  </ProtectedRoute>
-                }
-              />
-            ) : isAuthenticated && userRole === "admin" ? (
-              <Route
-                path="/admin"
-                element={
-                  <ProtectedRoute>
-                    <AdminDashboard onCategoryChange={handleCategoryChange} />
-                  </ProtectedRoute>
-                }
-              />
-            ) : null}
-
-            {/* Public Routes */}
+        {/*conditional statement for dashboards*/}
+        {userRole ? ( 
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoute>
+                  <UserDashboard/>
+                </ProtectedRoute>
+              }
+            />) : (  
+            <Route
+              path="/admin"
+              element={
+                <ProtectedRoute>
+                  <AdminDashboard />
+                </ProtectedRoute>
+              }
+            />
+            ) }
             <Route path="/home" element={<HomePage />} />
             <Route path="/aboutus" element={<AboutUs />} />
             <Route path="/register" element={<Register />} />
@@ -85,8 +82,6 @@ const App = () => {
             <Route path="/addform" element={<AddBusinessForm />} />
             <Route path="/businesscard" element={<BusinessCard />} />
             <Route path="/services" element={<Services />} />
-            
-            {/* Default Redirect */}
             <Route path="/" element={<Navigate to="/home" />} />
           </Routes>
         </main>

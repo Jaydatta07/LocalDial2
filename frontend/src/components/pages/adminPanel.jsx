@@ -1,4 +1,6 @@
 import React from "react";
+import LogoutButton from "./logOut";
+
 
 const AdminDashboard = () => {
   return (
@@ -11,6 +13,7 @@ const AdminDashboard = () => {
           <button className="mt-3 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
             View Users
           </button>
+          <LogoutButton />
         </div>
         <div className="p-4 bg-white shadow-md rounded-lg">
           <h2 className="text-lg font-semibold mb-2">Manage Businesses</h2>

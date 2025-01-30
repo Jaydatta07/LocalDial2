@@ -7,6 +7,7 @@ const Login = () => {
   // State hooks for form data
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [role, setRole] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -14,7 +15,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
   
-    if (!email || !password) {
+    if (!email || !password ||!role) {
       setError("All fields are required.");
       return;
     }
@@ -22,10 +23,11 @@ const Login = () => {
     try {
       setLoading(true);
       setError("");
-      const response = await loginUser({ email, password }); // API call to login user
+      const response = await loginUser({ email, password, role }); // API call to login user
   
       if (response.success) {
         localStorage.setItem("authToken", response.token);
+        
 
         alert("Login successful!");
         localStorage.setItem("authToken", response.token); // Save token
@@ -70,6 +72,18 @@ const Login = () => {
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-orange-500 focus:outline-none text-gray-800 placeholder-gray-400"
+              required
+            />
+          </div>
+
+           {/* Email Field */}
+           <div className="relative">
+            <input
+              type="role"
+              placeholder="Role"
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
               className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-orange-500 focus:outline-none text-gray-800 placeholder-gray-400"
               required
             />
