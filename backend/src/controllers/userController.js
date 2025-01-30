@@ -101,13 +101,12 @@ const loginUser = async (req, res) => {
       });
     }
 
-    const isRoleValid = await bcrypt.compare(role, user.role);
-    if (!isRoleValid) {
-      return res.status(401).json({
-        success: false,
-        message: "Invalid role",
+    if (user.role !== role) {
+      return res.status(400).json({
+          success: false,
+          message: "Security answer is incorrect",
       });
-    }
+  }
 
     // Generate a JWT token
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
