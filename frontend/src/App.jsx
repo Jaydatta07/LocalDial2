@@ -52,27 +52,7 @@ const App = () => {
         <main className="flex-grow">
           <Routes>
             <Route path="/protected" element={<ProtectedRoute />} />
-            {/* Protected Routes */}
-            
-        {/*conditional statement for dashboards*/}
-        {userRole ? ( 
-            <Route
-              path="/dashboard"
-              element={
-                <ProtectedRoute>
-                  <UserDashboard/>
-                </ProtectedRoute>
-              }
-            />) : (  
-            <Route
-              path="/admin"
-              element={
-                <ProtectedRoute>
-                  <AdminDashboard />
-                </ProtectedRoute>
-              }
-            />
-            ) }
+            <Route path="/dashboard" element={userRole==='admin'? <AdminDashboard />:<UserDashboard />} />
             <Route path="/home" element={<HomePage />} />
             <Route path="/aboutus" element={<AboutUs />} />
             <Route path="/register" element={<Register />} />
