@@ -73,10 +73,10 @@ const registerUser = async (req, res) => {
 // Login user (POST)
 const loginUser = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { email, password, role } = req.body;
 
     // Validate input
-    if (!email || !password) {
+    if (!email || !password || !role) {
       return res.status(400).json({
         success: false,
         message: "Email and password are required",
@@ -101,6 +101,14 @@ const loginUser = async (req, res) => {
       });
     }
 
+    const isRoleValid = await bcrypt.compare(role, user.role);
+    if (!isRoleValid) {
+      return res.status(402).json({
+        success: false,
+        message: "Invalid role",
+      });
+    }
+
     // Generate a JWT token
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "1h", // Token expires in 1 hour
@@ -115,6 +123,7 @@ const loginUser = async (req, res) => {
         id: user._id,
         name: user.name,
         email: user.email,
+        role: user.role,
       },
     });
   } catch (error) {

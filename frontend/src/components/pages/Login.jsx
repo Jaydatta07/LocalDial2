@@ -15,7 +15,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
   
-    if (!email || !password ||!role) {
+    if (!email || !password || !role) {
       setError("All fields are required.");
       return;
     }
@@ -27,7 +27,7 @@ const Login = () => {
   
       if (response.success) {
         localStorage.setItem("authToken", response.token);
-        
+        localStorage.setItem("userRole", response.role);
 
         alert("Login successful!");
         localStorage.setItem("authToken", response.token); // Save token

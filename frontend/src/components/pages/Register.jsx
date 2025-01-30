@@ -30,8 +30,8 @@ const Register = () => {
 
       if (response.success) {
         // Store the token and role in localStorage after successful registration
-        localStorage.setItem("authToken", response.token); // Assuming `response.token` contains the JWT token
-        localStorage.setItem("userRole", role); // Save the selected role to localStorage
+        // localStorage.setItem("authToken", response.token); // Assuming `response.token` contains the JWT token
+        // localStorage.setItem("userRole", role); // Save the selected role to localStorage
 
         alert("Registration successful! Please log in.");
         navigate("/login");
