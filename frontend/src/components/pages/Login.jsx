@@ -3,7 +3,7 @@ import { loginUser } from "../apiCalls";
 
 const Login = () => {
 
-  
+
   // State hooks for form data
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,17 +14,18 @@ const Login = () => {
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     if (!email || !password || !role) {
       setError("All fields are required.");
       return;
     }
-  
+
     try {
       setLoading(true);
       setError("");
       const response = await loginUser({ email, password, role }); // API call to login user
-  
+
+
       if (response.success) {
         localStorage.setItem("authToken", response.token);
         localStorage.setItem("userRole", role);
@@ -41,7 +42,8 @@ const Login = () => {
       setLoading(false);
     }
   };
-  
+
+
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-white">
@@ -77,17 +79,20 @@ const Login = () => {
             />
           </div>
 
-           {/* Email Field */}
-           <div className="relative">
-            <input
-              type="role"
-              placeholder="Role"
+          {/* Role Field */}
+          <div className="relative">
+            <select
               value={role}
               onChange={(e) => setRole(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-orange-500 focus:outline-none text-gray-800 placeholder-gray-400"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-orange-500 focus:outline-none text-gray-800"
               required
-            />
+            >
+              <option value="">Select Role</option>
+              <option value="user">User</option>
+              <option value="admin">Admin</option>
+            </select>
           </div>
+
 
           {/* Display Error */}
           {error && <div className="text-red-500 text-sm text-center">{error}</div>}
@@ -127,4 +132,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Login;

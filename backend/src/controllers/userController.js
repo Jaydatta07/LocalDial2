@@ -79,7 +79,7 @@ const loginUser = async (req, res) => {
     if (!email || !password || !role) {
       return res.status(400).json({
         success: false,
-        message: "Email and password are required",
+        message: "Email, password, and role are required",
       });
     }
 
@@ -101,15 +101,16 @@ const loginUser = async (req, res) => {
       });
     }
 
-    if (user.role !== role) {
-      return res.status(401).json({
-          success: false,
-          message: "Security answer is incorrect",
+    // Validate the role
+    if (user.role.trim().toLowerCase() !== role.trim().toLowerCase()) {
+      return res.status(403).json({
+        success: false,
+        message: `Role mismatch: You are registered as "${user.role}", not "${role}"`,
       });
-  }
+    }
 
     // Generate a JWT token
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+    const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, {
       expiresIn: "1h", // Token expires in 1 hour
     });
 
@@ -122,7 +123,7 @@ const loginUser = async (req, res) => {
         id: user._id,
         name: user.name,
         email: user.email,
-        role: user.role,
+        role: user.role, // Include role in the response
       },
     });
   } catch (error) {
@@ -133,6 +134,7 @@ const loginUser = async (req, res) => {
     });
   }
 };
+
 
 // Reset Password: Update password after verification (POST)
 const resetPassword = async (req, res) => {
