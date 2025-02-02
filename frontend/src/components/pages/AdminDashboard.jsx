@@ -3,7 +3,7 @@ import LogoutButton from "./logOut";
 import { useNavigate } from "react-router-dom";
 import { IoIosAddCircle } from "react-icons/io";
 
-const AdminDashboard = () => {
+const Admindashboard = () => {
 
   const navigate = useNavigate();
   // Function to navigate to the Add Business Form
@@ -38,4 +38,4 @@ const AdminDashboard = () => {
   );
 };
 
-export default AdminDashboard;
+export default Admindashboard;
