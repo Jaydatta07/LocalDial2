@@ -19,7 +19,8 @@ const Footer = () => {
             href="/contact"
             className="hover:text-orange-200 transition duration-300 no-underline flex items-center"
           >
-              <IoMdContact className="mr-1"/>Contact
+            <IoMdContact className="mr-1" />
+            Contact
           </a>
         </div>
 

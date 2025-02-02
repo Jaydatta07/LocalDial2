@@ -22,9 +22,13 @@ const ServicesPage = () => {
   
     getServices();
   }, []);
-
+  
   if (loading) {
-    return <div className="text-center">Loading...</div>;
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <img src="/src/assets/images/Spinner2.gif" alt="Loading..." className="w-42 h-40" />
+      </div>
+    );
   }
 
   if (error) {
