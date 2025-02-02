@@ -12,8 +12,8 @@ import ResetPassword from "./components/pages/ResetPassword";
 import Services from "./components/pages/Services";
 import BusinessCard from "./components/layout/BusinessCard";
 import NavbarAuth from "./components/layout/NavbarAuth";
-import AdminDashboard from "./components/pages/adminPanel";
-import UserDashboard from "./components/pages/Admindashboard";
+import AdminDashboard from "./components/pages/Admindashboard";
+import UserDashboard from "./components/pages/UserDashboard";
 import ProtectedRoute from "./components/pages/protectedRoutes";
 
 const App = () => {
