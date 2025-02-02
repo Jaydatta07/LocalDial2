@@ -71,7 +71,7 @@ const Navbar = ({ onCategoryChange, onFilter, isLoggedIn }) => {
          {/* Spacer */}
          <div className="ml-6"></div>
 
-        {/* Navigation Links */}
+        {/* Navigation Link */}
         <div className="hidden md:flex items-center space-x-6">
           <Link to="/home" className="hover:text-orange-200 transition duration-300 no-underline flex items-center">
             <AiOutlineHome className="mr-1" /> Home
