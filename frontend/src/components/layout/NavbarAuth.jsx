@@ -25,15 +25,18 @@ const NavbarAuth = ({ onCategoryChange, onFilter, isLoggedIn }) => {
   };
 
   return (
-    <nav className="bg-orange-700 text-orange-100 shadow-lg">
+    <nav className="bg-orange-700 text-orange-100 shadow-lg ">
       <div className="container mx-auto flex flex-wrap items-center justify-between px-6 py-4">
-        {/* Logo */}
-        <div className="flex items-center">
-          <span className="text-xl font-bold">LocalDial</span>
+         {/* Logo */}
+         <div className="flex items-center">
+          <span className="text-4xl font-extrabold">
+            <span className="text-black">Local</span>
+            <span className="text-blue-400">Dial</span>
+          </span>
         </div>
 
-        {/* Spacer */}
-        <div className="flex-grow"></div>
+           {/* Spacer for separation */}
+           <div className="flex-grow"></div>
 
         {/* Search Bar */}
         <div className="flex items-center space-x-2">

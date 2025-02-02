@@ -25,10 +25,16 @@ const Navbar = ({ onCategoryChange, onFilter, isLoggedIn }) => {
   return (
     <nav className="bg-orange-700 text-orange-100 shadow-lg">
       <div className="container mx-auto flex items-center justify-between px-6 py-4">
-        {/* Logo */}
-        <div className="flex items-center">
-          <span className="text-xl font-bold">LocalDial</span>
+          {/* Logo */}
+          <div className="flex items-center">
+          <span className="text-4xl font-extrabold">
+            <span className="text-orange-400">Local</span>
+            <span className="text-blue-600">Dial</span>
+          </span>
         </div>
+
+           {/* Spacer for separation */}
+           <div className="flex-grow"></div>
 
         {/* Search Bar */}
         <div className="flex items-center space-x-2">
@@ -61,6 +67,9 @@ const Navbar = ({ onCategoryChange, onFilter, isLoggedIn }) => {
           <option value="Hotels">Hotels</option>
           <option value="Pharmacies">Pharmacies</option>
         </select>
+
+         {/* Spacer */}
+         <div className="ml-6"></div>
 
         {/* Navigation Links */}
         <div className="hidden md:flex items-center space-x-6">

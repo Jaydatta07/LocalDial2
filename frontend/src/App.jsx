@@ -15,6 +15,8 @@ import NavbarAuth from "./components/layout/NavbarAuth";
 import AdminDashboard from "./components/pages/AdminDashboard";
 import UserDashboard from "./components/pages/UserDashboard";
 import ProtectedRoute from "./components/pages/protectedRoutes";
+import CategoryDetailPage from "./components/pages/categoryDetails";
+import Contact from "./components/pages/Contact";
 
 const App = () => {
   // State to track user authentication status
@@ -62,6 +64,8 @@ const App = () => {
             <Route path="/addform" element={<AddBusinessForm />} />
             <Route path="/businesscard" element={<BusinessCard />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/CategoryDetails" element={<CategoryDetailPage />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="/" element={<Navigate to="/home" />} />
           </Routes>
         </main>

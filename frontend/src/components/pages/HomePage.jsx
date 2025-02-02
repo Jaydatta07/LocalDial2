@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Header from "../layout/Header";
 import Categories from "./Categories";
+import { FcShipped } from "react-icons/fc";
+import { FcShop } from "react-icons/fc";
+import { FcPositiveDynamic } from "react-icons/fc";
+import { FcNext } from "react-icons/fc";
+
  // Import the Categories component
 
 const HomePage = () => {
@@ -23,7 +28,7 @@ const HomePage = () => {
   }, [category]);
 
   return (
-    <div className="p-6 bg-gray-100 min-h-screen">
+    <div className="p-6 bg-gray-100 min-h-screen ">
       <Header />
       
       {/* Categories Section */}
@@ -54,6 +59,16 @@ const HomePage = () => {
           </div>
         ))}
       </div>
+      <br />
+      <h1 className="text-4xl font-extrabold text-center text-2xl font-bold text-red-800 mb-4">
+        Thank You For Visiting Us!!!
+      </h1>
+      <br />
+      <h1 className="text-lg text-center flex justify-center items-center">
+       Your Need,Our Support <FcNext /><FcShipped /><FcShop /><FcPositiveDynamic />
+</h1>
+
+      <br />
     </div>
   );
 };

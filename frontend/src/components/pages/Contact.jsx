@@ -26,11 +26,11 @@ const Contact = () => {
   };
 
   return (
-    <div className="bg-orange-200 min-h-screen flex items-center justify-center py-10">
-      <div className="bg-white shadow-lg rounded-lg p-6 max-w-md w-full">
-        <h2 className="text-2xl font-bold text-orange-700 mb-4 text-center">
+    <div className="bg-white min-h-screen flex items-center justify-center py-10">
+      <div className="bg-orange-200 shadow-lg rounded-lg p-6 max-w-md w-full">
+        <h1 className="text-2xl font-bold text-red-400 mb-4 text-center">
           Contact Us
-        </h2>
+        </h1>
         {submitted ? (
           <div className="text-center">
             <p className="text-lg text-green-600 font-semibold">

@@ -36,9 +36,10 @@ const Categories = () => {
   ];
 
   return (
-    <div className="bg-white py-8">
+    <div className="bg-white py-8 ">
       <div className="container mx-auto text-center">
         <h2 className="text-3xl font-semibold mb-6 text-orange-900">Select Your Category</h2>
+        <br />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {categories.map((category, index) => (
             <div
