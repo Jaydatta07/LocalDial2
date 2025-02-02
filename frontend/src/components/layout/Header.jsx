@@ -67,7 +67,7 @@ const Header = () => {
   </div>
   <br />
   <br />
-  <h2 className="text-3xl font-semibold mb-6 text-orange-900 container mx-auto text-center">Select Your Category</h2>
+  <h2 className="text-3xl font-semibold mb-6 text-orange-900 container mx-auto text-center">Select Your service</h2>
   <br />
        {/* Cards Section */}
        <div className="flex flex-1 gap-4 justify-between">

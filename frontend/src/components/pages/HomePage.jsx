@@ -60,7 +60,7 @@ const HomePage = () => {
         ))}
       </div>
       <br />
-      <h1 className="text-4xl font-extrabold text-center text-2xl font-bold text-red-800 mb-4">
+      <h1 className="text-4xl font-extrabold text-center text-red-800 mb-4">
         Thank You For Visiting Us!!!
       </h1>
       <br />
