@@ -17,6 +17,7 @@ import UserDashboard from "./components/pages/UserDashboard";
 import ProtectedRoute from "./components/pages/protectedRoutes";
 import CategoryDetailPage from "./components/pages/categoryDetails";
 import Contact from "./components/pages/Contact";
+import Services2 from "./components/pages/services2";
 
 const App = () => {
   // State to track user authentication status
@@ -66,6 +67,7 @@ const App = () => {
             <Route path="/services" element={<Services />} />
             <Route path="/CategoryDetails" element={<CategoryDetailPage />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/services2" element={<Services2 />} />
             <Route path="/" element={<Navigate to="/home" />} />
           </Routes>
         </main>
