@@ -28,7 +28,7 @@ const AddBusinessForm = () => {
     const formData = new FormData();
     formData.append("name", name);
     formData.append("description", description);
-    formData.append("image", image[0]); // File Upload
+    formData.append("image", image); // File Upload
     formData.append("category", category);
     formData.append("city", city);
     formData.append("owner", owner);
@@ -92,11 +92,13 @@ const AddBusinessForm = () => {
 
           {/* Image Upload */}
           <input
-            type="file"
-            onChange={(e) => setImage(e.target.files)}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg"
-            required
-          />
+              type="text"
+              placeholder="Enter your image url"
+              value={image}
+              onChange={(e) => setImage(e.target.value)}
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-orange-500 focus:outline-none text-gray-800 placeholder-gray-400"
+              required
+            />
 
           {/* Category */}
           <select
