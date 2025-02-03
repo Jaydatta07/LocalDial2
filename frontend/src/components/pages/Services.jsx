@@ -3,7 +3,7 @@ import { fetchServices } from "../apiCalls";
 import BusinessCard from "../layout/BusinessCard";
 
 const ServicesPage = () => {
-  const [services, setServices] = useState([]); // Initialize as an empty array
+  const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -12,14 +12,19 @@ const ServicesPage = () => {
       try {
         const data = await fetchServices();
         console.log("Fetched services:", data);
-        setServices(data);
+        
+        if (Array.isArray(data.businesses)) {
+          setServices(data.businesses);
+        } else {
+          setError("Invalid data format received.");
+        }
       } catch (err) {
         setError(err.message || "Failed to fetch services");
       } finally {
         setLoading(false);
       }
     };
-  
+
     getServices();
   }, []);
 
@@ -39,7 +44,7 @@ const ServicesPage = () => {
     <div className="max-w-6xl mx-auto p-4">
       <h1 className="text-2xl font-bold text-center mb-6">Our Services</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {Array.isArray(services) && services.length > 0 ? (
+        {services.length > 0 ? (
           services.map((service) => (
             <BusinessCard
               key={service._id}
@@ -48,6 +53,9 @@ const ServicesPage = () => {
               image={service.image}
               category={service.category}
               city={service.city}
+              phone={service.phone}
+              email={service.email}
+              address={service.address}
             />
           ))
         ) : (
