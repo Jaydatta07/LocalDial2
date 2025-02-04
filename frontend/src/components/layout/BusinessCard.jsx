@@ -2,7 +2,7 @@ import React from "react";
 
 const BusinessCard = ({ name, description, image, category, city, phone, email, address, onViewDetails }) => {
   return (
-    <div className="w-84 bg-white rounded-lg shadow-md overflow-hidden">
+    <div className="w-64 bg-white rounded-lg shadow-md overflow-hidden">
       {/* Business Image */}
       <img
         className="w-full h-28 object-cover"
