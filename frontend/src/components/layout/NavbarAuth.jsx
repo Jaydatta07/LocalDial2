@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom"; // Import useNavigate for redirection
-import { AiOutlineHome, AiOutlineInfoCircle } from "react-icons/ai";
-import { MdOutlineMiscellaneousServices } from "react-icons/md";
-import { FaPlus, FaSearch } from "react-icons/fa";
+import { AiOutlineHome, AiOutlineInfoCircle } from "react-icons/ai"; // Home and About icons
+import { MdOutlineMiscellaneousServices } from "react-icons/md"; // Services icon
+import { FaPlus, FaSearch } from "react-icons/fa"; // Add and Search icons
 import { CgProfile } from "react-icons/cg";
 
-const NavbarAuth = ({ onCategoryChange, onFilter, isLoggedIn }) => {
+const NavbarAuth = ({ onFilter, isLoggedIn }) => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
@@ -14,18 +14,13 @@ const NavbarAuth = ({ onCategoryChange, onFilter, isLoggedIn }) => {
     const category = event.target.value;
     setSelectedCategory(category);
     
-    if (onCategoryChange) {
-      onCategoryChange(category);
-    }
-    
     navigate(`/services?category=${category}`);
   };
 
   const handleSearch = () => {
     if (onFilter) {
-      onFilter({ searchQuery, selectedCategory });
+      onFilter({ searchQuery, selectedCategory }); // Call only if the function is provided
     }
-    navigate(`/services?search=${searchQuery}&category=${selectedCategory}`);
   };
 
   return (
@@ -39,8 +34,8 @@ const NavbarAuth = ({ onCategoryChange, onFilter, isLoggedIn }) => {
           </span>
         </div>
 
-        {/* Spacer for separation */}
-        <div className="flex-grow"></div>
+           {/* Spacer for separation */}
+           <div className="flex-grow"></div>
 
         {/* Search Bar */}
         <div className="flex items-center space-x-2">
@@ -104,6 +99,7 @@ const NavbarAuth = ({ onCategoryChange, onFilter, isLoggedIn }) => {
             <CgProfile /> Dashboard
           </Link>
         </div>
+
       </div>
     </nav>
   );
