@@ -15,6 +15,10 @@ const Admindashboard = () => {
     navigate("/services2");
   };
 
+  const handleNavigateToUser = () => {
+    navigate("/services2");
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 p-4">
       <h1 className="text-2xl font-bold text-gray-800 mb-4">Admin Dashboard</h1>
@@ -41,6 +45,12 @@ const Admindashboard = () => {
             onClick={handleNavigateToMyServices} // Trigger navigate on button click
           >
           My services
+          </button>
+          <button
+            className="mt-3 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 hover:text-orange-200 transition duration-300 no-underline flex items-center"
+            onClick={handleNavigateToUser} // Trigger navigate on button click
+          >
+             My services
           </button>
         </div>
       </div>
