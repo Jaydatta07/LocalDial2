@@ -91,17 +91,17 @@ const NavbarAuth = ({ isLoggedIn }) => {
 
         {/* Navigation Links */}
         <div className="hidden md:flex items-center space-x-6">
-          <Link to="/home" className="hover:text-orange-200">
+          <Link to="/home" className="hover:text-orange-200 transition duration-300 no-underline flex items-center">
             <AiOutlineHome className="mr-1" /> Home
           </Link>
-          <Link to="/aboutus" className="hover:text-orange-200">
+          <Link to="/aboutus" className="hover:text-orange-200 transition duration-300 no-underline flex items-center">
             <AiOutlineInfoCircle className="mr-1" /> About Us
           </Link>
-          <Link to="/services" className="hover:text-orange-200">
+          <Link to="/services" className="hover:text-orange-200 transition duration-300 no-underline flex items-center">
             <MdOutlineMiscellaneousServices className="mr-1" /> Services
           </Link>
-          <Link to="/dashboard" className="hover:text-orange-200">
-            <CgProfile /> Dashboard
+          <Link to="/dashboard" className="hover:text-orange-200 transition duration-300 no-underline flex items-center">
+            <CgProfile className="mr-1"/> Dashboard
           </Link>
         </div>
       </div>
