@@ -3,7 +3,7 @@ import { API_PROUDCT_URL, LOGIN_URL, REGISTER_URL, RESET_PASSWORD_URL,API_URL } 
 
 // Axios instance with timeout and default headers
 const axiosInstance = axios.create({
-  timeout: 10000, // 10 seconds timeout
+  timeout: 5000, // 10 seconds timeout
   headers: {
     "Content-Type": "application/json",
   },
