@@ -60,7 +60,8 @@ const HomePage = () => {
             </div>
           </div>
         ))}
-      </div>
+      </div >
+      <div className="bg-gray-200 py-8">
       <br />
       <h1 className="text-4xl font-extrabold text-center text-red-800 mb-4">
         Thank You For Visiting Us!!!
@@ -71,6 +72,7 @@ const HomePage = () => {
 </h1>
 
       <br />
+      </div>
     </div>
   );
 };

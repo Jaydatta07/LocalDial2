@@ -47,8 +47,17 @@ const Login = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-white">
+         <div className="bg-gradient-to-r from-purple-200 to-blue-400 shadow-lg rounded-lg flex max-w-4xl w-full">
+        {/* Left Part - Image */}
+        <div className="w-1/2 flex items-center justify-center p-6">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRE6-9eTkXVCxGTGNSRTKsVOJxcnlY7fOqZOA&s"
+            alt="Contact Us"
+            className="rounded-lg shadow-md w-full h-auto"
+          />
+        </div>
       <div className="p-8 rounded-xl shadow-lg w-full max-w-sm transform transition hover:scale-105 duration-300">
-        <h2 className="text-2xl font-extrabold mb-6 text-center text-orange-700">
+        <h2 className="text-2xl font-extrabold mb-6 text-center text-blue-900">
           Welcome Back!
         </h2>
         <p className="text-center text-gray-600 mb-6">
@@ -100,7 +109,7 @@ const Login = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-orange-500 text-white py-3 rounded-lg shadow-md hover:bg-orange-600 hover:shadow-lg transform transition hover:scale-105 duration-300"
+            className="w-full bg-purple-600 text-white py-3 rounded-lg shadow-md hover:bg-blue-700 hover:shadow-lg transform transition hover:scale-105 duration-300"
             disabled={loading}
           >
             {loading ? "Logging in..." : "Login"}
@@ -111,7 +120,7 @@ const Login = () => {
         <div className="mt-4 text-center">
           <a
             href="/resetPassword"
-            className="text-orange-500 hover:underline transition duration-300"
+            className="text-white hover:underline transition duration-300"
           >
             Reset Password
           </a>
@@ -122,12 +131,13 @@ const Login = () => {
           Don’t have an account?{" "}
           <a
             href="/register"
-            className="text-orange-500 hover:underline transition duration-300"
+            className="text-white hover:underline transition duration-300"
           >
             Sign up
           </a>
         </p>
       </div>
+    </div>
     </div>
   );
 };

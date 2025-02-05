@@ -27,13 +27,13 @@ const NavbarAuth = ({ isLoggedIn }) => {
   };
 
   return (
-    <nav className="bg-orange-700 text-orange-100 shadow-lg">
+    <nav className="bg-gradient-to-r from-purple-300 to-blue-500 text-orange-100 shadow-lg p-4">
       <div className="container mx-auto flex flex-wrap items-center justify-between px-6 py-4">
         {/* Logo */}
         <div className="flex items-center">
           <span className="text-4xl font-extrabold">
-            <span className="text-black">Local</span>
-            <span className="text-blue-400">Dial</span>
+            <span className="text-black">Urban</span>
+            <span className="text-blue-400">Link</span>
           </span>
         </div>
 
@@ -50,7 +50,7 @@ const NavbarAuth = ({ isLoggedIn }) => {
             className="px-4 py-2 w-48 md:w-64 border border-orange-400 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
           />
           <button
-            className="bg-orange-500 text-white px-4 py-2 rounded-r-lg hover:bg-orange-600 transition duration-300 flex items-center"
+            className="bg-blue-800 text-white px-4 py-2 rounded-r-lg hover:bg-orange-600 transition duration-300 flex items-center"
           >
             <FaSearch className="mr-2" /> Search
           </button>
@@ -58,7 +58,7 @@ const NavbarAuth = ({ isLoggedIn }) => {
 
         {/* Category Dropdown */}
         <select
-          className="ml-4 px-4 py-2 bg-orange-500 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600"
+          className="ml-4 px-4 py-2 bg-blue-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600"
           value={selectedCategory}
           onChange={(e) => handleFilterChange("category", e.target.value)}
         >
@@ -73,7 +73,7 @@ const NavbarAuth = ({ isLoggedIn }) => {
 
         {/* Cities Dropdown */}
         <select
-          className="ml-4 px-4 py-2 bg-orange-500 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600"
+          className="ml-4 px-4 py-2 bg-blue-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600"
           value={selectedCity}
           onChange={(e) => handleFilterChange("city", e.target.value)}
         >
@@ -100,7 +100,7 @@ const NavbarAuth = ({ isLoggedIn }) => {
           <Link to="/services" className="hover:text-orange-200 transition duration-300 no-underline flex items-center">
             <MdOutlineMiscellaneousServices className="mr-1" /> Services
           </Link>
-          <Link to="/register" className="px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition duration-300 shadow-md no-underline">
+          <Link to="/register" className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-blue-600 transition duration-300 shadow-md no-underline">
             Sign Up
           </Link>
         </div>

@@ -26,7 +26,7 @@ const Contact = () => {
 
   return (
     <div className="bg-white min-h-screen flex items-center justify-center py-10">
-      <div className="bg-orange-200 shadow-lg rounded-lg flex max-w-4xl w-full">
+      <div className="bg-gradient-to-r from-purple-200 to-blue-400 shadow-lg rounded-lg flex max-w-4xl w-full">
         {/* Left Part - Image */}
         <div className="w-1/2 flex items-center justify-center p-6">
           <img
@@ -38,7 +38,7 @@ const Contact = () => {
         
         {/* Right Part - Contact Form */}
         <div className="w-1/2 p-6">
-          <h1 className="text-2xl font-bold text-red-400 mb-4 text-center">Contact Us</h1>
+          <h1 className="text-2xl font-bold text-blue-900 mb-4 text-center">Contact Us</h1>
           {submitted ? (
             <div className="text-center">
               <p className="text-lg text-green-600 font-semibold">
@@ -91,7 +91,7 @@ const Contact = () => {
 
               <button
                 type="submit"
-                className="bg-orange-500 text-white px-4 py-2 rounded-lg w-full font-bold hover:bg-orange-600 transition duration-300"
+                className="bg-purple-600 text-white px-4 py-2 rounded-lg w-full font-bold hover:bg-blue-700 transition duration-300"
               >
                 Submit
               </button>

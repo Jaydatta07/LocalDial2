@@ -6,11 +6,11 @@ import { IoMdContact } from "react-icons/io";
 
 const Footer = () => {
   return (
-    <footer className="bg-orange-700 text-orange-100 py-8 shadow-lg">
+    <footer className="bg-gradient-to-r from-purple-300 to-blue-500 text-orange-100 shadow-lg p-4">
       <div className="container mx-auto flex flex-wrap justify-between items-center px-6">
         {/* Logo */}
         <div className="flex items-center mb-4 md:mb-0">
-          <span className="text-xl font-bold">LocalDial</span>
+          <span className="text-xl font-bold text-black">UrbanLink</span>
         </div>
 
         {/* Navigation Links */}

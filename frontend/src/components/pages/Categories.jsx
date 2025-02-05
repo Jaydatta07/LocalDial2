@@ -18,14 +18,14 @@ const Categories = () => {
   };
 
   return (
-    <div className="bg-white py-8">
+    <div className="bg-gradient-to-r from-purple-200 to-blue-400 py-8">
       <div className="container mx-auto text-center">
         <h2 className="text-3xl font-semibold mb-6 text-orange-900">Select Your Category</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {categories.map((category, index) => (
             <div
               key={index}
-              className="cursor-pointer bg-orange-100 p-4 rounded-lg shadow-md hover:bg-orange-200 transition duration-300"
+              className="cursor-pointer bg-white p-4 rounded-lg shadow-md hover:bg-blue-400 transition duration-300"
               onClick={() => handleCategoryClick(category.name)}
             >
               <div className="w-full h-40 flex items-center justify-center bg-gray-100 rounded-lg overflow-hidden mb-4">

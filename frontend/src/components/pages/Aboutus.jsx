@@ -2,10 +2,10 @@ import React from "react";
 import Navbar from "../layout/Navbar";
 const AboutUs = () => {
   return (
-    <div className="bg-orange-200 text-orange-900">
+    <div className="bg-gradient-to-r from-purple-200 to-blue-400">
        
       {/* Header Section */}
-      <header className="bg-orange-200 py-8">
+      <header className="bg-gradient-to-r from-purple-200 to-blue-400 py-8">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl font-bold text-center">About Us</h1>
           <p className="text-lg text-center mt-2">
