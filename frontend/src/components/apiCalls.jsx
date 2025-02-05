@@ -89,7 +89,7 @@ export const fetchServices = async () => {
   }
 };
 //image uploading
-const handleFileUpload = async (file) => {
+export const handleFileUpload = async (file) => {
   const formData = new FormData();
   formData.append("file", file);
 
