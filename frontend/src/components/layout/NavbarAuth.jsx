@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineHome, AiOutlineInfoCircle } from "react-icons/ai";
+import { IoIosContacts } from "react-icons/io";
 import { MdOutlineMiscellaneousServices } from "react-icons/md";
 import { FaSearch } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
@@ -92,16 +93,16 @@ const NavbarAuth = ({ isLoggedIn }) => {
         {/* Navigation Links */}
         <div className="hidden md:flex items-center space-x-6">
           <Link to="/home" className="hover:text-orange-200 transition duration-300 no-underline flex items-center">
-            <AiOutlineHome className="mr-1" /> Home
+            <AiOutlineHome className="mr-1" size={30}/>
           </Link>
           <Link to="/aboutus" className="hover:text-orange-200 transition duration-300 no-underline flex items-center">
-            <AiOutlineInfoCircle className="mr-1" /> About Us
+            <IoIosContacts className="mr-1" size={30}/>
           </Link>
           <Link to="/services" className="hover:text-orange-200 transition duration-300 no-underline flex items-center">
-            <MdOutlineMiscellaneousServices className="mr-1" /> Services
+            <MdOutlineMiscellaneousServices className="mr-1" size={30}/> 
           </Link>
           <Link to="/dashboard" className="hover:text-orange-200 transition duration-300 no-underline flex items-center">
-            <CgProfile className="mr-1"/> Dashboard
+            <CgProfile className="mr-1" size={30}/> 
           </Link>
         </div>
       </div>

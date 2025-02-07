@@ -64,7 +64,7 @@ const Header = () => {
           local, thrive together.
         </p>
         <br />
-        <br /><br /><br />
+        <br /><br /><br /><br /><br />
         <div className="flex justify-center">
           <button
             onClick={handleGetStarted}

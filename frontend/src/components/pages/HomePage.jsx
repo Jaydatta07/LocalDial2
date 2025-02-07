@@ -30,7 +30,7 @@ const HomePage = () => {
   
 
   return (
-    <div className="p-6 bg-gray-100 min-h-screen ">
+    <div className="p-6 bg-gradient-to-r from-blue-50 to-blue-100 min-h-screen ">
       <Header />
       
       {/* Categories Section */}
@@ -61,16 +61,18 @@ const HomePage = () => {
           </div>
         ))}
       </div >
-      <div className="bg-gray-200 py-8">
+      <div className="p-6 bg-gradient-to-r from-blue-50 to-blue-100 py-8">
       <br />
       <h1 className="text-4xl font-extrabold text-center text-red-800 mb-4">
         Thank You For Visiting Us!!!
       </h1>
       <br />
       <h1 className="text-lg text-center flex justify-center items-center">
-       Your Need,Our Support <FcNext /><FcShipped /><FcShop /><FcPositiveDynamic />
+       Your Need,Our Support <FcNext  className="mr-1" size={30}/><FcShipped  className="mr-1" size={30}/><FcShop  className="mr-1" size={30}/><FcPositiveDynamic />
 </h1>
-
+{/* <div className="flex justify-center items-center h-auto">
+        <img src="./images/contactus.png" alt="Loading..." className="auto" />
+      </div> */}
       <br />
       </div>
     </div>

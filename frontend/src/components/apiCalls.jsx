@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_PROUDCT_URL, LOGIN_URL, REGISTER_URL, RESET_PASSWORD_URL,API_URL } from "../endPoint";
+import { API_PROUDCT_URL, LOGIN_URL, REGISTER_URL, RESET_PASSWORD_URL,API_URL,API_PROUDCTID_URL } from "../endPoint";
 
 // Axios instance with timeout and default headers
 const axiosInstance = axios.create({
@@ -100,6 +100,36 @@ export const handleFileUpload = async (file) => {
   } catch (error) {
     console.error("Error uploading file:", error);
     throw new Error("File upload failed");
+  }
+};
+
+// API Call for fetching a single business by ID
+export const getBusinessById = async (id) => {
+  try {
+    const response = await axiosInstance.get(API_PROUDCTID_URL,id);
+    return response.data.business; // Return the business object from the response
+  } catch (error) {
+    console.error("Error fetching business details:", error);
+    if (error.response) {
+      throw new Error(error.response.data.message || "Failed to fetch business details");
+    } else if (error.request) {
+      throw new Error("No response from server. Please try again later.");
+    } else {
+      throw new Error(error.message || "Unexpected error occurred");
+    }
+  }
+};
+
+export const fetchBusinessDetails = async () => {
+  try {
+    const data = await getBusinessById(id);
+    console.log("API Response:", data); // Log the response
+    setBusinessDetails(data);
+  } catch (err) {
+    setError("Error fetching business details");
+    console.error(err);
+  } finally {
+    setLoading(false);
   }
 };
 
